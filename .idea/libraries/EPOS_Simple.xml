@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="EPOS_Simple">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/EPOS_Simple.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

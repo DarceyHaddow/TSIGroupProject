@@ -209,38 +209,59 @@ public class EposUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    //this populates the quantity combo box
-    cmboQuantity.addItem("1");
-    cmboQuantity.addItem("2");
-    cmboQuantity.addItem("3");
-    cmboQuantity.addItem("4");
-    cmboQuantity.addItem("5");
-    cmboQuantity.addItem("6");
-    cmboQuantity.addItem("7");
-    cmboQuantity.addItem("8");
-    cmboQuantity.addItem("9");
-    cmboQuantity.addItem("10");
-    
-    //this populates the product and price combo box
-    cmboProductPrice.addItem("Croissant: £0.80");
-    cmboProductPrice.addItem("Eclair: £0.70");
-    cmboProductPrice.addItem("Profiterole: £0.35");
-    cmboProductPrice.addItem("Mille Feuille: £1.40");
-    cmboProductPrice.addItem("Madeleine: £0.20");
-    cmboProductPrice.addItem("Cannele: £0.40");
-    cmboProductPrice.addItem("Macaron: £0.60");
-    cmboProductPrice.addItem("Pain au Chocolat: £0.85");
-    cmboProductPrice.addItem("Tarte Tartin: £4.60");
-    
+        //this populates the quantity combo box
+        // refactored to use the quantity class
+        Quantity one = new Quantity(1);
+        Quantity two = new Quantity(2);
+        Quantity three = new Quantity(3);
+        Quantity four = new Quantity(4);
+        Quantity five = new Quantity(5);
+        Quantity six = new Quantity(6);
+        Quantity seven = new Quantity(7);
+        Quantity eight = new Quantity(8);
+        Quantity nine = new Quantity(9);
+        Quantity ten = new Quantity(10);
+
+        cmboQuantity.addItem(one.quantityInfo(1));
+        cmboQuantity.addItem(two.quantityInfo(2));
+        cmboQuantity.addItem(three.quantityInfo(3));
+        cmboQuantity.addItem(four.quantityInfo(4));
+        cmboQuantity.addItem(five.quantityInfo(5));
+        cmboQuantity.addItem(six.quantityInfo(6));
+        cmboQuantity.addItem(seven.quantityInfo(7));
+        cmboQuantity.addItem(eight.quantityInfo(8));
+        cmboQuantity.addItem(nine.quantityInfo(9));
+        cmboQuantity.addItem(ten.quantityInfo(10));
+
+        //this populates the product and price combo box
+        //refactored to use the Product class
+
+        Product croissant = new Product(0.80, "Croissant");
+        Product eclair =new Product(0.70 ,"Eclair");
+        Product profiterole = new Product(0.35, "Profiterole");
+        Product milleFeuille = new Product(1.40,"Mille Feuille");
+        Product madeleine = new Product(0.20, "Madeleine");
+        Product cannele = new Product(0.40, "Cannele");
+        Product macaron = new Product(0.60, "Macaron");
+        Product painAuChocolat = new Product(0.85, "Pain au Chocolat");
+        Product tarteTartin = new Product(4.60, "Tarte Tartin");
+
+        cmboProductPrice.addItem(croissant.productInfo(0.80, "Croissant"));
+        cmboProductPrice.addItem(eclair.productInfo(0.70 ,"Eclair"));
+        cmboProductPrice.addItem(profiterole.productInfo(0.35, "Profiterole"));
+        cmboProductPrice.addItem(milleFeuille.productInfo(1.40,"Mille Feuille"));
+        cmboProductPrice.addItem(madeleine.productInfo(0.20, "Madeleine"));
+        cmboProductPrice.addItem(cannele.productInfo(0.40, "Cannele"));
+        cmboProductPrice.addItem(macaron.productInfo(0.60, "Macaron"));
+        cmboProductPrice.addItem(painAuChocolat.productInfo(0.85, "Pain au Chocolat"));
+        cmboProductPrice.addItem(tarteTartin.productInfo(4.60, "Tarte Tartin"));
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
-    
-    //this resets and clears the frame back to its original state
-    txtEndOfDayReport.setText("");
-    lblTotal.setText("");
-    cmboProductPrice.setSelectedIndex(0);
-    cmboQuantity.setSelectedIndex(0);
+
+        //this resets and clears the frame back to its original state
+        setFrame("","",0,0);
     
     //this adds the current order to the arraylist
     totalOrderCollection.add(currentOrder);    
@@ -291,7 +312,16 @@ public class EposUI extends javax.swing.JFrame {
     currentOrder=0.0;
     }//GEN-LAST:event_btnCheckoutActionPerformed
 
-    
+
+    private void setFrame(String reportText, String lblText, int productPrice, int quantity) {
+        txtEndOfDayReport.setText(reportText);
+        lblTotal.setText(lblText);
+        cmboProductPrice.setSelectedIndex(productPrice);
+        cmboQuantity.setSelectedIndex(quantity);
+    }
+
+
+
     private void cmboQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboQuantityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmboQuantityActionPerformed
@@ -300,10 +330,8 @@ public class EposUI extends javax.swing.JFrame {
     //this resets and clears the frame back to its original state
     if(evt.getSource()==btnCancel)
     {
-        txtOrder.setText(null);
-        cmboProductPrice.setSelectedIndex(0);
-        cmboQuantity.setSelectedIndex(0);
-        lblTotal.setText("");
+        setFrame(null,"",0,0);
+        txtOrder.setText("");
         currentOrder=0.0;
     }
     }//GEN-LAST:event_btnCancelActionPerformed
