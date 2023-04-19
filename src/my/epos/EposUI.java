@@ -12,10 +12,7 @@ import javax.swing.JList;
 import java.text.DecimalFormat;
 
 
-/**
- *
- * @author 30393405
- */
+
 public class EposUI extends javax.swing.JFrame {
     //declaring variables
     DefaultListModel productListModel = new DefaultListModel();
@@ -209,8 +206,7 @@ public class EposUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //this populates the quantity combo box
-        // refactored to use the quantity class
+
         Quantity one = new Quantity(1);
         Quantity two = new Quantity(2);
         Quantity three = new Quantity(3);
@@ -233,8 +229,7 @@ public class EposUI extends javax.swing.JFrame {
         cmboQuantity.addItem(nine.quantityInfo(9));
         cmboQuantity.addItem(ten.quantityInfo(10));
 
-        //this populates the product and price combo box
-        //refactored to use the Product class
+
 
         Product croissant = new Product(0.80, "Croissant");
         Product eclair =new Product(0.70 ,"Eclair");
