@@ -46,7 +46,6 @@ public class EposUI extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         lblTotal = new javax.swing.JLabel();
         btnCheckout = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         pnlReports = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtEndOfDayReport = new javax.swing.JTextArea();
@@ -93,8 +92,6 @@ public class EposUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-
         javax.swing.GroupLayout pnlOrderLayout = new javax.swing.GroupLayout(pnlOrder);
         pnlOrder.setLayout(pnlOrderLayout);
         pnlOrderLayout.setHorizontalGroup(
@@ -117,11 +114,8 @@ public class EposUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrderLayout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlOrderLayout.createSequentialGroup()
-                                .addComponent(btnCancel)
-                                .addGap(3, 3, 3))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(btnCancel)
+                        .addGap(3, 3, 3)))
                 .addContainerGap())
         );
         pnlOrderLayout.setVerticalGroup(
@@ -135,10 +129,7 @@ public class EposUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlOrderLayout.createSequentialGroup()
-                        .addComponent(btnCancel)
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton1)))
+                    .addComponent(btnCancel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -396,7 +387,6 @@ public class EposUI extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> cmboProductPrice;
     private javax.swing.JComboBox<String> cmboQuantity;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
