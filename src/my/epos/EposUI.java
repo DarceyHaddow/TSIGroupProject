@@ -15,6 +15,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JList;
 import java.text.DecimalFormat;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 
 
@@ -203,6 +205,10 @@ public class EposUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+        login();
+        //this populates the quantity combo box
+        // refactored to use the quantity class
+
         Quantity one = new Quantity(1);
         Quantity two = new Quantity(2);
         Quantity three = new Quantity(3);
@@ -245,6 +251,7 @@ public class EposUI extends javax.swing.JFrame {
                 System.out.println("SQL exception occured" + e);
                 
             }
+
 
 
     }//GEN-LAST:event_formWindowOpened
@@ -345,6 +352,45 @@ public class EposUI extends javax.swing.JFrame {
     lblTotal.setText("Total: £" + df.format(currentOrder));
     }//GEN-LAST:event_btnAddActionPerformed
 
+    
+    private void login() {
+        JLabel label_login = new JLabel("Employee ID:");
+        JTextField login = new JTextField();
+
+        Object[] login_GUI_Elements = {label_login, login};
+
+        int userInteraction = JOptionPane.showConfirmDialog(null, login_GUI_Elements, "Login",
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE);
+
+        if (userInteraction == JOptionPane.OK_OPTION)
+        {
+            String user = login.getText().trim();
+            Boolean entryGranted = false;
+            if ((user.toUpperCase().equals ("1234")))
+            {
+                JOptionPane.showMessageDialog(this, "Logged in as " + user);
+                entryGranted=true;
+            }
+            if (!entryGranted)
+            {
+                JOptionPane.showMessageDialog(this, "Entry denied");
+                userInteraction = JOptionPane.CANCEL_OPTION;
+            }
+        }
+        else
+            {
+            userInteraction = JOptionPane.CANCEL_OPTION;
+            }
+
+        if ((userInteraction == JOptionPane.CANCEL_OPTION) || (userInteraction == JOptionPane.CLOSED_OPTION))
+            {
+                JOptionPane.showMessageDialog(this, "You have not supplied valid credentials\nThe application will now terminate");
+                System.exit(0);
+            }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
