@@ -5,6 +5,11 @@
  */
 package my.epos;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -14,10 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-/**
- *
- * @author 30393405
- */
+
 public class EposUI extends javax.swing.JFrame {
     //declaring variables
     DefaultListModel productListModel = new DefaultListModel();
@@ -48,7 +50,6 @@ public class EposUI extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         lblTotal = new javax.swing.JLabel();
         btnCheckout = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         pnlReports = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtEndOfDayReport = new javax.swing.JTextArea();
@@ -95,8 +96,6 @@ public class EposUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-
         javax.swing.GroupLayout pnlOrderLayout = new javax.swing.GroupLayout(pnlOrder);
         pnlOrder.setLayout(pnlOrderLayout);
         pnlOrderLayout.setHorizontalGroup(
@@ -119,11 +118,8 @@ public class EposUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrderLayout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlOrderLayout.createSequentialGroup()
-                                .addComponent(btnCancel)
-                                .addGap(3, 3, 3))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(btnCancel)
+                        .addGap(3, 3, 3)))
                 .addContainerGap())
         );
         pnlOrderLayout.setVerticalGroup(
@@ -137,10 +133,7 @@ public class EposUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlOrderLayout.createSequentialGroup()
-                        .addComponent(btnCancel)
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton1)))
+                    .addComponent(btnCancel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -211,9 +204,11 @@ public class EposUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
         login();
         //this populates the quantity combo box
         // refactored to use the quantity class
+
         Quantity one = new Quantity(1);
         Quantity two = new Quantity(2);
         Quantity three = new Quantity(3);
@@ -236,29 +231,29 @@ public class EposUI extends javax.swing.JFrame {
         cmboQuantity.addItem(nine.quantityInfo(9));
         cmboQuantity.addItem(ten.quantityInfo(10));
 
+
         //this populates the product and price combo box
-        //refactored to use the Product class
 
-        Product croissant = new Product(0.80, "Croissant");
-        Product eclair =new Product(0.70 ,"Eclair");
-        Product profiterole = new Product(0.35, "Profiterole");
-        Product milleFeuille = new Product(1.40,"Mille Feuille");
-        Product madeleine = new Product(0.20, "Madeleine");
-        Product cannele = new Product(0.40, "Cannele");
-        Product macaron = new Product(0.60, "Macaron");
-        Product painAuChocolat = new Product(0.85, "Pain au Chocolat");
-        Product tarteTartin = new Product(4.60, "Tarte Tartin");
+                try 
+            {
+                Connection con = DriverManager.getConnection ("jdbc:ucanaccess://Data\\Products.accdb"); 
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery ("SELECT * FROM ProductsPrices");
+                while (rs.next()) 
+                {        
+                    Product product;
+                    product = new Product(rs.getDouble("Price"), rs.getString("Product"));
+                    cmboProductPrice.addItem(rs.getString("Product")+": £" +rs.getDouble("Price"));
+                }
+            }
+         catch(SQLException e)
+            {
+                System.out.println("SQL exception occured" + e);
+                
+            }
 
-        cmboProductPrice.addItem(croissant.productInfo(0.80, "Croissant"));
-        cmboProductPrice.addItem(eclair.productInfo(0.70 ,"Eclair"));
-        cmboProductPrice.addItem(profiterole.productInfo(0.35, "Profiterole"));
-        cmboProductPrice.addItem(milleFeuille.productInfo(1.40,"Mille Feuille"));
-        cmboProductPrice.addItem(madeleine.productInfo(0.20, "Madeleine"));
-        cmboProductPrice.addItem(cannele.productInfo(0.40, "Cannele"));
-        cmboProductPrice.addItem(macaron.productInfo(0.60, "Macaron"));
-        cmboProductPrice.addItem(painAuChocolat.productInfo(0.85, "Pain au Chocolat"));
-        cmboProductPrice.addItem(tarteTartin.productInfo(4.60, "Tarte Tartin"));
-  
+
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
@@ -438,7 +433,6 @@ public class EposUI extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> cmboProductPrice;
     private javax.swing.JComboBox<String> cmboQuantity;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;

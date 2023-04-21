@@ -6,7 +6,7 @@ public class Button {
     private String Colour;
 
     private String Text;
-    //set up data type for an image?
+
 
     public Button(int height, int width, String colour,String text) {
         Height = height;
