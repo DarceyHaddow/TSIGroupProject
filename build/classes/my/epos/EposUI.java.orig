@@ -24,9 +24,9 @@ public class EposUI extends javax.swing.JFrame {
     //declaring variables
     DefaultListModel productListModel = new DefaultListModel();
     ArrayList<Double> totalOrderCollection = new ArrayList<Double>();
-
+    //Double currentOrder = 0.0;
     CurrentOrder currentOrder = new CurrentOrder();
-
+    //need to call initaliseCurrentOrder!!
     private javax.swing.JList<String> lstOrders;
     public EposUI() {
         initComponents();
@@ -207,13 +207,13 @@ public class EposUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-
+<<<<<<< HEAD
         currentOrder.initaliseCurrentOrder();
-
+=======
         login();
         //this populates the quantity combo box
         // refactored to use the quantity class
-
+>>>>>>> 3b1bfc2944c710362be7c61b00f07dce61f1a913
 
         Quantity one = new Quantity(1);
         Quantity two = new Quantity(2);
