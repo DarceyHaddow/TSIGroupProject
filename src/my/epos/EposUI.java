@@ -5,6 +5,11 @@
  */
 package my.epos;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -221,26 +226,26 @@ public class EposUI extends javax.swing.JFrame {
         cmboQuantity.addItem(ten.quantityInfo(10));
 
 
+        //this populates the product and price combo box
 
-        Product croissant = new Product(0.80, "Croissant");
-        Product eclair =new Product(0.70 ,"Eclair");
-        Product profiterole = new Product(0.35, "Profiterole");
-        Product milleFeuille = new Product(1.40,"Mille Feuille");
-        Product madeleine = new Product(0.20, "Madeleine");
-        Product cannele = new Product(0.40, "Cannele");
-        Product macaron = new Product(0.60, "Macaron");
-        Product painAuChocolat = new Product(0.85, "Pain au Chocolat");
-        Product tarteTartin = new Product(4.60, "Tarte Tartin");
+                try 
+            {
+                Connection con = DriverManager.getConnection ("jdbc:ucanaccess://Data\\Products.accdb"); 
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery ("SELECT * FROM ProductsPrices");
+                while (rs.next()) 
+                {        
+                    Product product;
+                    product = new Product(rs.getDouble("Price"), rs.getString("Product"));
+                    cmboProductPrice.addItem(rs.getString("Product")+": £" +rs.getDouble("Price"));
+                }
+            }
+         catch(SQLException e)
+            {
+                System.out.println("SQL exception occured" + e);
+                
+            }
 
-        cmboProductPrice.addItem(croissant.productInfo(0.80, "Croissant"));
-        cmboProductPrice.addItem(eclair.productInfo(0.70 ,"Eclair"));
-        cmboProductPrice.addItem(profiterole.productInfo(0.35, "Profiterole"));
-        cmboProductPrice.addItem(milleFeuille.productInfo(1.40,"Mille Feuille"));
-        cmboProductPrice.addItem(madeleine.productInfo(0.20, "Madeleine"));
-        cmboProductPrice.addItem(cannele.productInfo(0.40, "Cannele"));
-        cmboProductPrice.addItem(macaron.productInfo(0.60, "Macaron"));
-        cmboProductPrice.addItem(painAuChocolat.productInfo(0.85, "Pain au Chocolat"));
-        cmboProductPrice.addItem(tarteTartin.productInfo(4.60, "Tarte Tartin"));
 
     }//GEN-LAST:event_formWindowOpened
 
