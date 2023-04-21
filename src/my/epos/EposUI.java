@@ -17,7 +17,9 @@ public class EposUI extends javax.swing.JFrame {
     //declaring variables
     DefaultListModel productListModel = new DefaultListModel();
     ArrayList<Double> totalOrderCollection = new ArrayList<Double>();
-    Double currentOrder = 0.0;
+    //Double currentOrder = 0.0;
+    CurrentOrder currentOrder = new CurrentOrder();
+    //need to call initaliseCurrentOrder!!
     private javax.swing.JList<String> lstOrders;
     public EposUI() {
         initComponents();
@@ -198,6 +200,8 @@ public class EposUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+        currentOrder.initaliseCurrentOrder();
+
         Quantity one = new Quantity(1);
         Quantity two = new Quantity(2);
         Quantity three = new Quantity(3);
@@ -250,13 +254,13 @@ public class EposUI extends javax.swing.JFrame {
         setFrame("","",0,0);
     
     //this adds the current order to the arraylist
-    totalOrderCollection.add(currentOrder);    
+    totalOrderCollection.add(currentOrder.getCurrentOrder());
     
     //defining variables
     Double orderTotal = 0.0;
     Double totalSales = 0.0;
     Double atv = 0.0;
-    Double min = currentOrder;
+    Double min = currentOrder.getCurrentOrder();
     Double max = 0.0;
     
     //this counts the number of items in the array (or customers)
@@ -293,9 +297,9 @@ public class EposUI extends javax.swing.JFrame {
     txtEndOfDayReport.append("Minimum spend: £" + df.format(min) +"\n");
     
     txtOrder.setText(null);
-    JOptionPane.showMessageDialog(this, "Your total is: £" + df.format(currentOrder) + "\nThank you for your order");
+    JOptionPane.showMessageDialog(this, "Your total is: £" + df.format(currentOrder.getCurrentOrder()) + "\nThank you for your order");
     
-    currentOrder=0.0;
+    currentOrder.initaliseCurrentOrder();
     }//GEN-LAST:event_btnCheckoutActionPerformed
 
 
@@ -318,7 +322,7 @@ public class EposUI extends javax.swing.JFrame {
     {
         setFrame(null,"",0,0);
         txtOrder.setText("");
-        currentOrder=0.0;
+        currentOrder.initaliseCurrentOrder();
     }
     }//GEN-LAST:event_btnCancelActionPerformed
 
@@ -335,9 +339,9 @@ public class EposUI extends javax.swing.JFrame {
     double productPriceCost = price*productQuantity;
     
     //this totals all the quantities*products
-    currentOrder+= productPriceCost;
+    currentOrder.currentOrderValue(productPriceCost);
     //this writes the running total order cost to screen
-    lblTotal.setText("Total: £" + df.format(currentOrder));
+    lblTotal.setText("Total: £" + currentOrder.outputCurrentOrder());
     }//GEN-LAST:event_btnAddActionPerformed
 
     /**
