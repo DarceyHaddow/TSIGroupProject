@@ -1,5 +1,3 @@
-package my.epos;
-
 public class Button {
     private int Height;
     private int Width;

@@ -1,5 +1,3 @@
-package my.epos;
-
 import java.text.NumberFormat;
 import java.util.Locale;
 

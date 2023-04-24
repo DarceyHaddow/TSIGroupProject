@@ -1,5 +1,3 @@
-package my.epos;
-
 public class Quantity {
     private int Quantity;
 
