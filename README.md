@@ -11,10 +11,15 @@ EPOS (Electric Point of Sale) system which provides bakery assistants an interfa
 - The netBeans IDE is best for making changes to the GUI as it gives an interactive Design interface.
 
 ### Notes on Classes
-- The Javax library (and the javax.swing.JFrame class) support the application. This class is within the main code.
+- The Javax library (and the javax.swing.JFrame class) support the application. This is within the EposUI class.
 - All classes have the package my.epos to allow them to be called within the main code.
 - The Button class, created in the commit 'Basic Class Implementation Added', did have notes about adding an image to a button. This will require more investigation from the engineer if we decide to implement this! The notes have been deleted to maintain clean code.
 - Both Product and Quantity have an Info method, these take the attributes of the class to allow them to be implemented in different places of the code.
+
+- ER Diagram between Classes:
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/127321272/234123551-4477e801-12ca-4fac-a99b-ba96640f0255.png">
+
 
 ### User Stories
 - As a user, I would like a clearly labelled interface, to easily ring through customer’s items. 
