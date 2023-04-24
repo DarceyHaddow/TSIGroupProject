@@ -51,7 +51,7 @@ public class EposUI extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         lblTotal = new javax.swing.JLabel();
         btnCheckout = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        spinnerQuantity = new javax.swing.JSpinner();
         pnlReports = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtEndOfDayReport = new javax.swing.JTextArea();
@@ -100,9 +100,8 @@ public class EposUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlOrderLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
+                        .addComponent(spinnerQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmboProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,11 +121,13 @@ public class EposUI extends javax.swing.JFrame {
         pnlOrderLayout.setVerticalGroup(
             pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOrderLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmboProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnAdd)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlOrderLayout.createSequentialGroup()
+                        .addComponent(spinnerQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                        .addGap(1, 1, 1))
+                    .addComponent(cmboProductPrice))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,7 +210,7 @@ public class EposUI extends javax.swing.JFrame {
         //this populates the quantity combo box
         // refactored to use the quantity class
             
-        jSpinner1.setValue(1);
+        spinnerQuantity.setValue(1);
 
         //this populates the product and price combo box
 
@@ -294,7 +295,7 @@ public class EposUI extends javax.swing.JFrame {
         txtEndOfDayReport.setText(reportText);
         lblTotal.setText(lblText);
         cmboProductPrice.setSelectedIndex(productPrice);
-        jSpinner1.setValue(1);
+        spinnerQuantity.setValue(1);
     }
 
 
@@ -313,18 +314,18 @@ public class EposUI extends javax.swing.JFrame {
     //this defines the colon postiion
     int cp = cmboProductPrice.getSelectedItem().toString().indexOf(":");
     //this pulls the quantity, product and price from the combo boxes into the text field
-    txtOrder.append((String) jSpinner1.getValue().toString() + "x ");
+    txtOrder.append((String) spinnerQuantity.getValue().toString() + "x ");
     txtOrder.append((String) cmboProductPrice.getSelectedItem() + "\n");
     
     //this extracts prices from the product price combo box and multiplies them by their respective quantities 
     double price = Double.parseDouble(cmboProductPrice.getSelectedItem().toString().substring(cp+3));
-    int productQuantity = Integer.parseInt(jSpinner1.getValue().toString());
+    int productQuantity = Integer.parseInt(spinnerQuantity.getValue().toString());
     double productPriceCost = price*productQuantity;
     
     //this totals all the quantities*products
     currentOrder.currentOrderValue(productPriceCost);
     //this writes the running total order cost to screen
-    lblTotal.setText("Total: £" + currentOrder.outputCurrentOrder());
+    lblTotal.setText("Total: " + currentOrder.outputCurrentOrder());
     }//GEN-LAST:event_btnAddActionPerformed
 
     
@@ -409,11 +410,11 @@ public class EposUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmboProductPrice;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel pnlOrder;
     private javax.swing.JPanel pnlReports;
+    private javax.swing.JSpinner spinnerQuantity;
     private javax.swing.JTextArea txtEndOfDayReport;
     private javax.swing.JTextArea txtOrder;
     // End of variables declaration//GEN-END:variables
