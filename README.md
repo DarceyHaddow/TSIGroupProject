@@ -7,7 +7,8 @@ EPOS (Electric Point of Sale) system which provides bakery assistants an interfa
 
 ### Use of IDE's
 - As discussed in our retrospective both netBeans and intelliJ can support this application: please make sure to check any changes in both IDEs for consistency before commiting your changes.
-- The netBeans IDE is best for making changes to the GUI
+- The application is dependent on a connection with a database (Microsoft Access) to populate the combobox with products and prices. The appropriate Jar files are present allowing this connection to be established however in order to see the data, the application must be run in Netbeans rather than any other IDE.
+- The netBeans IDE is best for making changes to the GUI as it gives an interactive Design interface.
 
 ### Notes on Classes
 - The Javax library (and the javax.swing.JFrame class) support the application. This class is within the main code.
