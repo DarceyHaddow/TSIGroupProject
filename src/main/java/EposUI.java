@@ -327,8 +327,11 @@ public class EposUI extends javax.swing.JFrame {
     lblTotal.setText("Total: " + currentOrder.outputCurrentOrder());
     }//GEN-LAST:event_btnAddActionPerformed
 
-    
-    private void login() {
+    public String getReturnState(String returnState){
+        return(returnState);
+    }
+    protected String login() {
+        String returnState = "No process occured";
         JLabel label_login = new JLabel("Employee ID:");
         JTextField login = new JTextField();
 
@@ -338,31 +341,34 @@ public class EposUI extends javax.swing.JFrame {
         JOptionPane.OK_CANCEL_OPTION,
         JOptionPane.PLAIN_MESSAGE);
 
+        Boolean entryGranted = false;
+
         if (userInteraction == JOptionPane.OK_OPTION)
         {
             String user = login.getText().trim();
-            Boolean entryGranted = false;
-            if ((user.toUpperCase().equals ("1234")))
+            if ((user.equals ("1234")))
             {
                 JOptionPane.showMessageDialog(this, "Logged in as " + user);
                 entryGranted=true;
+                returnState = "Logged in";
             }
-            if (!entryGranted)
+            else
             {
                 JOptionPane.showMessageDialog(this, "Entry denied");
-                userInteraction = JOptionPane.CANCEL_OPTION;
+                returnState = "Entry Denied";
             }
         }
-        else
-            {
-            userInteraction = JOptionPane.CANCEL_OPTION;
-            }
 
-        if ((userInteraction == JOptionPane.CANCEL_OPTION) || (userInteraction == JOptionPane.CLOSED_OPTION))
+
+        if (!entryGranted || (userInteraction == JOptionPane.CANCEL_OPTION) || (userInteraction == JOptionPane.CLOSED_OPTION))
             {
                 JOptionPane.showMessageDialog(this, "You have not supplied valid credentials\nThe application will now terminate");
                 System.exit(0);
+                returnState = "You have not supplied valid credentials";
             }
+
+        return getReturnState(returnState);
+        //return(entryGranted);
     }
     
     
