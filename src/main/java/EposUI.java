@@ -358,110 +358,103 @@ public class EposUI extends javax.swing.JFrame {
     lblTotal.setText("Total: " + currentOrder.outputCurrentOrder());
     }//GEN-LAST:event_btnAddActionPerformed
 
-<<<<<<< HEAD:src/my/epos/EposUI.java
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    
-    private void login() {
-=======
-    public String getReturnState(String returnState){
-        return(returnState);
+    public String getReturnState (String returnState){
+        return (returnState);
     }
-    protected String login() {
+
+
+
+    protected String login () {
         String returnState = "No process occured";
->>>>>>> 89a2dc40222d96ebac88b9761fd6ac7bf18951b3:src/main/java/EposUI.java
         JLabel label_login = new JLabel("Employee ID:");
         JTextField login = new JTextField();
 
         Object[] login_GUI_Elements = {label_login, login};
 
         int userInteraction = JOptionPane.showConfirmDialog(null, login_GUI_Elements, "Login",
-        JOptionPane.OK_CANCEL_OPTION,
-        JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
 
         Boolean entryGranted = false;
 
-        if (userInteraction == JOptionPane.OK_OPTION)
-        {
+        if (userInteraction == JOptionPane.OK_OPTION) {
             String user = login.getText().trim();
-            if ((user.equals ("1234")))
-            {
+            if ((user.equals("1234"))) {
                 JOptionPane.showMessageDialog(this, "Logged in as " + user);
-                entryGranted=true;
+                entryGranted = true;
                 returnState = "Logged in";
-            }
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(this, "Entry denied");
                 returnState = "Entry Denied";
             }
         }
 
 
-        if (!entryGranted || (userInteraction == JOptionPane.CANCEL_OPTION) || (userInteraction == JOptionPane.CLOSED_OPTION))
-            {
-                JOptionPane.showMessageDialog(this, "You have not supplied valid credentials\nThe application will now terminate");
-                System.exit(0);
-                returnState = "You have not supplied valid credentials";
-            }
+        if (!entryGranted || (userInteraction == JOptionPane.CANCEL_OPTION) || (userInteraction == JOptionPane.CLOSED_OPTION)) {
+            JOptionPane.showMessageDialog(this, "You have not supplied valid credentials\nThe application will now terminate");
+            System.exit(0);
+            returnState = "You have not supplied valid credentials";
+        }
 
         return getReturnState(returnState);
-        //return(entryGranted);
-    }
-    
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            //return(entryGranted);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EposUI().setVisible(true);
+        /**
+         * @param args the command line arguments
+         */
+        public static void main (String args[]){
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+             * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+             */
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
-        });
-    }
+            //</editor-fold>
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnCheckout;
-    private javax.swing.JComboBox<String> cmboProductPrice;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lblTotal;
-    private javax.swing.JPanel pnlOrder;
-    private javax.swing.JPanel pnlReports;
-    private javax.swing.JSpinner spinnerQuantity;
-    private javax.swing.JTextArea txtEndOfDayReport;
-    private javax.swing.JTextArea txtOrder;
-    // End of variables declaration//GEN-END:variables
-}
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new EposUI().setVisible(true);
+                }
+            });
+        }
+
+        // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton btnAdd;
+        private javax.swing.JButton btnCancel;
+        private javax.swing.JButton btnCheckout;
+        private javax.swing.JComboBox<String> cmboProductPrice;
+        private javax.swing.JLabel jLabel1;
+        private javax.swing.JScrollPane jScrollPane1;
+        private javax.swing.JScrollPane jScrollPane2;
+        private javax.swing.JTabbedPane jTabbedPane1;
+        private javax.swing.JTextField jTextField1;
+        private javax.swing.JLabel lblTotal;
+        private javax.swing.JPanel pnlOrder;
+        private javax.swing.JPanel pnlReports;
+        private javax.swing.JSpinner spinnerQuantity;
+        private javax.swing.JTextArea txtEndOfDayReport;
+        private javax.swing.JTextArea txtOrder;
+        // End of variables declaration//GEN-END:variables
+    }
