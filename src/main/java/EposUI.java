@@ -206,8 +206,6 @@ public class EposUI extends javax.swing.JFrame {
         currentOrder.initaliseCurrentOrder();
 
         login();
-        //this populates the quantity combo box
-        // refactored to use the quantity class
             
         spinnerQuantity.setValue(1);
 
@@ -242,15 +240,14 @@ public class EposUI extends javax.swing.JFrame {
     
     //this adds the current order to the arraylist
     totalOrderCollection.add(currentOrder.getCurrentOrder());
-    
-    //defining variables
+
     Double orderTotal = 0.0;
     Double totalSales = 0.0;
     Double atv = 0.0;
     Double min = currentOrder.getCurrentOrder();
     Double max = 0.0;
     
-    //this counts the number of items in the array (or customers)
+    //this counts the number of items in the array i.e. customers
     for(int i=0;i<totalOrderCollection.size();i++)
     {
     totalSales+=totalOrderCollection.get(i);
@@ -275,8 +272,7 @@ public class EposUI extends javax.swing.JFrame {
         }
          
     }
-    
-    //this prints information to the report screen
+
     txtEndOfDayReport.append("Total sales takings: £" + df.format(orderTotal) +"\n");
     txtEndOfDayReport.append("Total customers: " + String.valueOf(totalOrderCollection.size())+"\n");
     txtEndOfDayReport.append("Average transaction value: £" + df.format(atv) +"\n");
@@ -300,7 +296,7 @@ public class EposUI extends javax.swing.JFrame {
 
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-    //this resets and clears the frame back to its original state
+
     if(evt.getSource()==btnCancel)
     {
         setFrame(null,"",0,0);
@@ -323,7 +319,6 @@ public class EposUI extends javax.swing.JFrame {
     
     //this totals all the quantities*products
     currentOrder.currentOrderValue(productPriceCost);
-    //this writes the running total order cost to screen
     lblTotal.setText("Total: " + currentOrder.outputCurrentOrder());
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -368,7 +363,7 @@ public class EposUI extends javax.swing.JFrame {
             }
 
         return getReturnState(returnState);
-        //return(entryGranted);
+
     }
     
     
@@ -376,28 +371,6 @@ public class EposUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EposUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
