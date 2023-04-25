@@ -358,20 +358,16 @@ public class EposUI extends javax.swing.JFrame {
     lblTotal.setText("Total: " + currentOrder.outputCurrentOrder());
     }//GEN-LAST:event_btnAddActionPerformed
 
-<<<<<<< HEAD:src/my/epos/EposUI.java
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    
-    private void login() {
-=======
+
     public String getReturnState(String returnState){
         return(returnState);
     }
     protected String login() {
         String returnState = "No process occured";
->>>>>>> 89a2dc40222d96ebac88b9761fd6ac7bf18951b3:src/main/java/EposUI.java
         JLabel label_login = new JLabel("Employee ID:");
         JTextField login = new JTextField();
 
