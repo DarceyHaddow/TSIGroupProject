@@ -51,93 +51,143 @@ public class EposUI extends javax.swing.JFrame {
         lblTotal = new javax.swing.JLabel();
         btnCheckout = new javax.swing.JButton();
         spinnerQuantity = new javax.swing.JSpinner();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         pnlReports = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtEndOfDayReport = new javax.swing.JTextArea();
-        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("EPOS Simple");
+        setTitle("Patisserie Parfait");
+        setBounds(new java.awt.Rectangle(0, 0, 0, 628));
+        setMaximumSize(new java.awt.Dimension(2147483647, 628));
+        setPreferredSize(new java.awt.Dimension(883, 628));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
+        jTabbedPane1.setBackground(new java.awt.Color(70, 81, 181));
+        jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
+
+        pnlOrder.setBackground(new java.awt.Color(131, 155, 220));
+        pnlOrder.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlOrder.setMinimumSize(new java.awt.Dimension(0, 625));
+        pnlOrder.setPreferredSize(new java.awt.Dimension(883, 625));
+
+        cmboProductPrice.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        cmboProductPrice.setAlignmentX(0.0F);
+        cmboProductPrice.setAlignmentY(0.0F);
+        cmboProductPrice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         txtOrder.setColumns(20);
         txtOrder.setRows(5);
         jScrollPane1.setViewportView(txtOrder);
 
+        btnAdd.setBackground(new java.awt.Color(74, 232, 68));
+        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAdd.setText("Add");
+        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
 
+        btnCancel.setBackground(new java.awt.Color(240, 100, 100));
+        btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
 
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(255, 255, 255));
         lblTotal.setText("Total: £");
+        lblTotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
+        btnCheckout.setBackground(new java.awt.Color(39, 23, 121));
+        btnCheckout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCheckout.setForeground(new java.awt.Color(255, 255, 255));
         btnCheckout.setText("Checkout");
+        btnCheckout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCheckout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCheckoutActionPerformed(evt);
             }
         });
 
+        spinnerQuantity.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
+        spinnerQuantity.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jTextField1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 24)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(70, 81, 181));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("We put the 'ooh la la' in every pastry we make!");
+        jTextField1.setToolTipText("");
+        jTextField1.setOpaque(true);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText(" ");
+
         javax.swing.GroupLayout pnlOrderLayout = new javax.swing.GroupLayout(pnlOrder);
         pnlOrder.setLayout(pnlOrderLayout);
         pnlOrderLayout.setHorizontalGroup(
             pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlOrderLayout.createSequentialGroup()
+            .addComponent(jTextField1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlOrderLayout.createSequentialGroup()
-                        .addComponent(spinnerQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlOrderLayout.createSequentialGroup()
+                        .addComponent(spinnerQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(cmboProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmboProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlOrderLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrderLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCancel)
-                        .addGap(3, 3, 3)))
-                .addContainerGap())
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlOrderLayout.createSequentialGroup()
+                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
         pnlOrderLayout.setVerticalGroup(
             pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOrderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(19, 19, 19)
+                .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
-                    .addGroup(pnlOrderLayout.createSequentialGroup()
-                        .addComponent(spinnerQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
-                    .addComponent(cmboProductPrice))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnCancel)
+                    .addComponent(jLabel1)
+                    .addComponent(cmboProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinnerQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlOrderLayout.createSequentialGroup()
-                        .addComponent(btnCheckout)
-                        .addGap(0, 6, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(131, 131, 131)
+                        .addComponent(btnCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrderLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Order", pnlOrder);
@@ -152,43 +202,28 @@ public class EposUI extends javax.swing.JFrame {
             pnlReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReportsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlReportsLayout.setVerticalGroup(
             pnlReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReportsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Reports", pnlReports);
-
-        btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane1)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnExit)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExit)
-                .addGap(0, 16, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, Short.MAX_VALUE)
         );
 
         pack();
@@ -196,10 +231,6 @@ public class EposUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private static final DecimalFormat df = new DecimalFormat("0.00");
     
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
 
@@ -321,6 +352,11 @@ public class EposUI extends javax.swing.JFrame {
     lblTotal.setText("Total: " + currentOrder.outputCurrentOrder());
     }//GEN-LAST:event_btnAddActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+
     public String getReturnState(String returnState){
         return(returnState);
     }
@@ -404,11 +440,12 @@ public class EposUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCheckout;
-    private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> cmboProductPrice;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel pnlOrder;
     private javax.swing.JPanel pnlReports;
